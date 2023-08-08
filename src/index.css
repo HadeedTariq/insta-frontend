@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+.login{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    @apply text-2xl my-2 text-center font-bold
+}
+@tailwind utilities;
