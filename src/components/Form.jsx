@@ -32,7 +32,7 @@ function Form({ register, login }) {
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}/user/auth`, form)
       toast.dismiss(loading)
-      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/user/singleUser`, {})
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/user/singleUser`, {},{withCredentials:true})
       dispatch(loginUser(data))
       toast.success("User LogedIn Successfully",{duration:1000})
       setTimeout(() => {
