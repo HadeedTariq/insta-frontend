@@ -30,9 +30,9 @@ function Form({ register, login }) {
     let form = new FormData(e.currentTarget)
     form = Object.fromEntries(form)
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/user/auth`, form,{withCredentials:true})
+      const {data}=await axios.post(`${import.meta.env.VITE_API_URL}/user/auth`, form,{withCredentials:true})
       toast.dismiss(loading)
-      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/user/singleUser`, {},{withCredentials:true})
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/user/singleUser`, {instaUser:data},{withCredentials:true})
       dispatch(loginUser(data))
       toast.success("User LogedIn Successfully",{duration:1000})
       setTimeout(() => {
