@@ -32,7 +32,6 @@ function Form({ register, login }) {
     let form = new FormData(e.currentTarget);
     form = Object.fromEntries(form);
     try {
-<<<<<<< HEAD
       await axios.post(`${import.meta.env.VITE_API_URL}/user/auth`, form, {
         withCredentials: true,
       });
@@ -44,13 +43,7 @@ function Form({ register, login }) {
       );
       dispatch(loginUser(data));
       toast.success("User LogedIn Successfully", { duration: 1000 });
-=======
-      const {data:token}=await axios.post(`${import.meta.env.VITE_API_URL}/user/auth`, form,{withCredentials:true})
-      toast.dismiss(loading)
-      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/user/singleUser`, {instaUser:token},{withCredentials:true})
-      dispatch(loginUser(data))
-      toast.success("User LogedIn Successfully",{duration:1000})
->>>>>>> 9d78a928c2cabe626ed33f0e2ae4dedd886f71a7
+      toast.dismiss(loading);
       setTimeout(() => {
         navigate("/");
       }, 1000);
