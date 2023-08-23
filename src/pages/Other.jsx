@@ -21,9 +21,11 @@ function Other() {
             <img
               src={user.userImage}
               alt="profile"
-              className="w-44 rounded-full h-44 object-cover"
+              className="w-44 rounded-full h-44 max-[400px]:w-20  max-[400px]:h-20 object-cover"
             />
-            <p className="font-bold text-amber-400 text-2xl">{user.name}</p>
+            <p className="font-semibold text-amber-400 text-2xl max-[400px]:text-base">
+              {user.name}
+            </p>
           </li>
           {user.hobby !== "" && (
             <p className="text-xl font-semibold my-3 text-gray-200">

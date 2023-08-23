@@ -29,7 +29,7 @@ function Profile() {
               Hobbies: {user.hobby}
             </p>
           )}
-          <p className="text-xl font-semibold my-3 text-amber-300">
+          <p className="text-xl max-[400px]:text-base font-semibold my-3 text-amber-300">
             {user.description}
           </p>
           <div className="flex gap-5 my-2">
