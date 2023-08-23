@@ -24,9 +24,11 @@ function Profile() {
             />
             <p className="font-bold text-amber-400 text-2xl">{user.name}</p>
           </li>
-          <p className="text-xl font-semibold my-3 text-gray-200">
-            Hobbies: {user.hobby}
-          </p>
+          {user.hobby && (
+            <p className="text-xl font-semibold my-3 text-gray-200">
+              Hobbies: {user.hobby}
+            </p>
+          )}
           <p className="text-xl font-semibold my-3 text-amber-300">
             {user.description}
           </p>

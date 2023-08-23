@@ -32,16 +32,19 @@ function Form({ register, login }) {
     let form = new FormData(e.currentTarget);
     form = Object.fromEntries(form);
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/user/auth`, form, {
+      const {
+        data: { token },
+      } = await axios.post(`${import.meta.env.VITE_API_URL}/user/auth`, form, {
         withCredentials: true,
       });
       toast.dismiss(loading);
-      const { data } = await axios.post(
+      const { data: credentials } = await axios.post(
         `${import.meta.env.VITE_API_URL}/user/singleUser`,
-        {},
+        { token },
         { withCredentials: true }
       );
-      dispatch(loginUser(data));
+      localStorage.setItem("instaUser", JSON.stringify(token));
+      dispatch(loginUser(credentials));
       toast.success("User LogedIn Successfully", { duration: 1000 });
       toast.dismiss(loading);
       setTimeout(() => {

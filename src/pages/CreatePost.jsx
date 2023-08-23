@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { FiUpload } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 function CreatePost() {
+  const [disable, setDisable] = useState(true);
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
   const [file, setFile] = useState(null);
@@ -37,7 +38,6 @@ function CreatePost() {
     form.set("userImage", user.userImage);
     form.set("tags", tags);
     form.set("postImage", file);
-    console.log(form);
     try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/post/create`,
@@ -56,6 +56,11 @@ function CreatePost() {
       toast.error(error.response.data.message, { duration: 1500 });
     }
   };
+  useEffect(() => {
+    if (tags && desc && file) {
+      setDisable(false);
+    }
+  }, [file]);
   return (
     <div className="flex py-5">
       <Toaster
@@ -91,7 +96,7 @@ function CreatePost() {
               className="z-20 w-full h-full overflow-hidden"
             />
           )}
-          <form
+          <div
             onClick={() => document.querySelector(".inp-field").click()}
             className="absolute bottom-1 z-10">
             <FiUpload size={30} className="left-16 z-2" />
@@ -102,9 +107,13 @@ function CreatePost() {
               hidden
               onChange={uploadToClient}
             />
-          </form>
+          </div>
         </div>
-        <button className="py-1 px-10 text-lg font-bold rounded-md bg-sky-500">
+        <button
+          className={`py-1 px-10 text-lg font-bold rounded-md ${
+            disable ? "bg-slate-300 text-black" : "bg-sky-500"
+          }`}
+          disabled={disable}>
           Post
         </button>
       </form>

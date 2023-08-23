@@ -39,7 +39,6 @@ function EditProfile() {
     form.set("name", user.name);
     form.set("userImage", file);
     form = Object.fromEntries(form);
-    console.log(form);
     try {
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/user/updateUserDetails`,
@@ -57,7 +56,6 @@ function EditProfile() {
       }, 2000);
     } catch (error) {
       toast.dismiss(loading);
-      console.log(error);
       toast.error(error.response.date.message, { duration: 1500 });
     }
   };
@@ -82,7 +80,7 @@ function EditProfile() {
               className="rounded-full z-20 w-full h-full overflow-hidden"
             />
           )}
-          <form
+          <div
             onClick={() => document.querySelector(".inp-field").click()}
             className="absolute bottom-1 z-10">
             <FiUpload size={30} className="left-16 z-2" />
@@ -93,7 +91,7 @@ function EditProfile() {
               hidden
               onChange={uploadToClient}
             />
-          </form>
+          </div>
         </div>
         <textarea
           type="text"
