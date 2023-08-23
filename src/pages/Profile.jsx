@@ -49,7 +49,7 @@ function Profile() {
             {userPosts?.map((post) => (
               <img
                 key={post._id}
-                src={`${import.meta.env.VITE_API_URL}/posts/${post.postImage}`}
+                src={post.postImage}
                 alt="post"
                 className="w-64 h-64 object-cover m-3 max-[885px]:w-full max-[885px]:h-full"
               />
