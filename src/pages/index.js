@@ -9,17 +9,19 @@ import Search from "./Search";
 import EditProfile from "./EditProfile";
 import Other from "./Other";
 import CreatePost from "./CreatePost";
+import SinglePost from "./SinglePost";
 
 export {
-    HomePage,
-    Login,
-    Register,
-    UpdatePassword,
-    DeleteUser,
-    Setting,
-    Profile,
-    Search,
-    EditProfile,
-    Other,
-    CreatePost,
-}
+  HomePage,
+  Login,
+  Register,
+  UpdatePassword,
+  DeleteUser,
+  Setting,
+  Profile,
+  Search,
+  EditProfile,
+  Other,
+  CreatePost,
+  SinglePost,
+};

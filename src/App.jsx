@@ -9,6 +9,7 @@ import {
   Register,
   Search,
   Setting,
+  SinglePost,
   UpdatePassword,
 } from "./pages";
 import {
@@ -32,6 +33,25 @@ function App() {
                 </section>
                 <section className="w-3/5 max-[944px]:w-3/4 max-[591px]:w-full max-[591px]:mb-14">
                   <HomePage />
+                </section>
+                <section className="w-1/4  min-h-screen relative max-[944px]:hidden">
+                  <SideBar />
+                </section>
+                <section className="w-full min-[591px]:hidden">
+                  <LowBar />
+                </section>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/addComment/:id"
+            element={
+              <ProtectedRoute>
+                <section className=" w-1/5 border-r-2 min-h-screen relative max-[944px]:w-48 max-[591px]:hidden">
+                  <NavBar />
+                </section>
+                <section className="w-3/5 max-[944px]:w-3/4 max-[591px]:w-full max-[591px]:mb-14 p-4">
+                  <SinglePost />
                 </section>
                 <section className="w-1/4  min-h-screen relative max-[944px]:hidden">
                   <SideBar />

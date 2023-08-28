@@ -3,7 +3,7 @@ import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { FaRegComment } from "react-icons/fa";
 import { BsSave2, BsSave2Fill } from "react-icons/bs";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function Post({ post }) {
   const [seeMore, setSeeMore] = useState(false);
   const [like, setLike] = useState(false);
   const [save, setSave] = useState(false);
-  const { description, tags, postImage, userImage, userName } = post;
+  const { description, tags, postImage, userImage, userName, _id } = post;
   const goToProfile = (name) => {
     if (name === user.name) {
       navigate("/profile");
@@ -73,7 +73,9 @@ function Post({ post }) {
               onClick={() => setLike((like) => !like)}
             />
           )}
-          <FaRegComment size={25} cursor={"pointer"} />
+          <Link to={`/addComment/${_id}`}>
+            <FaRegComment size={25} cursor={"pointer"} />
+          </Link>
         </div>
         {!save && (
           <BsSave2
