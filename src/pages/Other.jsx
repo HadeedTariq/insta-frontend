@@ -37,12 +37,14 @@ function Other() {
           </p>
           <div className="flex gap-4  my-3 mx-3">
             {userPosts?.map((post) => (
-              <img
-                key={post._id}
-                src={post.postImage}
-                alt="post"
-                className="w-64 h-64 object-cover max-[834px]:w-80 max-[834px]:h-72"
-              />
+              <Link to={`/addComment/${post._id}`}>
+                <img
+                  key={post._id}
+                  src={post.postImage}
+                  alt="post"
+                  className="w-64 h-64 object-cover max-[834px]:w-80 max-[834px]:h-72"
+                />
+              </Link>
             ))}
           </div>
         </section>

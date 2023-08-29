@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { BsSave2, BsSave2Fill } from "react-icons/bs";
 import { AiOutlineSend } from "react-icons/ai";
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +16,6 @@ function SinglePost() {
   const { user } = useSelector((state) => state.user);
   const [seeMore, setSeeMore] = useState(false);
   const [like, setLike] = useState(false);
-  const [save, setSave] = useState(false);
   const goToProfile = (name) => {
     if (name === user.name) {
       navigate("/profile");
@@ -59,7 +57,7 @@ function SinglePost() {
             </div>
             {!seeMore && (
               <div className="fle flex-col px-3">
-                <p className="text-lg font-semibold my-2">
+                <p className="text-lg font-semibold my-2 max-[540px]:text-base max-[540px]:font-normal">
                   {singlePost.description?.slice(0, 100)}
                   <button
                     className="text-fuchsia-500 mx-2 underline"
@@ -71,10 +69,10 @@ function SinglePost() {
             )}
             {seeMore && (
               <div className="fle flex-col px-3">
-                <p className="text-lg font-semibold my-2">
+                <p className="text-lg font-semibold my-2 max-[540px]:text-base max-[540px]:font-normal">
                   {singlePost.description}
                 </p>
-                <p className="text-lg font-bold text-amber-400">
+                <p className="text-lg font-bold text-amber-400 max-[540px]:text-base max-[540px]:font-normal">
                   {singlePost.tags}
                   <button
                     className="text-red-500 mx-2 underline"
@@ -86,7 +84,7 @@ function SinglePost() {
             )}
             <img
               src={singlePost.postImage}
-              className="w-96 h-96 max-[834px]:w-80 max-[834px]:h-80 object-cover mx-auto"
+              className="w-96 h-96 max-[834px]:w-80 max-[834px]:h-72 object-cover mx-auto"
               alt="post-image"
             />
             <div className="flex justify-between px-3">
@@ -106,20 +104,6 @@ function SinglePost() {
                   />
                 )}
               </div>
-              {!save && (
-                <BsSave2
-                  size={25}
-                  cursor={"pointer"}
-                  onClick={() => setSave((save) => !save)}
-                />
-              )}
-              {save && (
-                <BsSave2Fill
-                  size={25}
-                  cursor={"pointer"}
-                  onClick={() => setSave((save) => !save)}
-                />
-              )}
             </div>
           </div>
           <div className="my-4 flex gap-2 items-center">
