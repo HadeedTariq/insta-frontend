@@ -10,7 +10,6 @@ function Post({ post }) {
   const { user } = useSelector((state) => state.user);
   const [seeMore, setSeeMore] = useState(false);
   const [like, setLike] = useState(false);
-  const [save, setSave] = useState(false);
   const { description, tags, postImage, userImage, userName, _id } = post;
   const goToProfile = (name) => {
     if (name === user.name) {
@@ -29,7 +28,7 @@ function Post({ post }) {
       </div>
       {!seeMore && (
         <div className="fle flex-col px-3">
-          <p className="text-lg font-semibold my-2">
+          <p className="text-lg max-[540px]:text-base max-[540px]:font-normal font-semibold my-2">
             {description.slice(0, 100)}
             <button
               className="text-fuchsia-500 mx-2 underline"
@@ -54,7 +53,7 @@ function Post({ post }) {
       )}
       <img
         src={postImage}
-        className="w-96 h-96 max-[834px]:w-80 max-[834px]:h-80 object-cover mx-auto"
+        className="w-96 h-96 max-[834px]:w-80 max-[834px]:h-72 object-cover mx-auto"
         alt="post-image"
       />
       <div className="flex justify-between px-3">
@@ -77,20 +76,6 @@ function Post({ post }) {
             <FaRegComment size={25} cursor={"pointer"} />
           </Link>
         </div>
-        {!save && (
-          <BsSave2
-            size={25}
-            cursor={"pointer"}
-            onClick={() => setSave((save) => !save)}
-          />
-        )}
-        {save && (
-          <BsSave2Fill
-            size={25}
-            cursor={"pointer"}
-            onClick={() => setSave((save) => !save)}
-          />
-        )}
       </div>
     </div>
   );

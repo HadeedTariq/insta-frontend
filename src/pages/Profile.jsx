@@ -20,16 +20,16 @@ function Profile() {
             <img
               src={user.userImage}
               alt="profile"
-              className="w-44 rounded-full h-44 object-cover"
+              className="w-44 rounded-full h-44 max-[600px]:w-36 max-[600px]:h-36 object-cover"
             />
-            <p className="font-bold text-amber-400 text-2xl">{user.name}</p>
+            <p className="font-semibold text-amber-400 text-xl">{user.name}</p>
           </li>
           {user.hobby && (
             <p className="text-xl font-semibold my-3 text-gray-200">
               Hobbies: {user.hobby}
             </p>
           )}
-          <p className="text-xl max-[400px]:text-base font-semibold my-3 text-amber-300">
+          <p className="text-xl max-[500px]:text-base font-semibold my-3 text-amber-300">
             {user.description}
           </p>
           <div className="flex gap-5 my-2">
@@ -45,14 +45,16 @@ function Profile() {
               Setting
             </Link>
           </div>
-          <div className="flex gap-4 justify-center  my-3 mx-3 max-[1064px]:flex-wrap">
+          <div className="flex gap-4 justify-center  mb-12 mt-4 mx-3 max-[1064px]:flex-wrap">
             {userPosts?.map((post) => (
-              <img
-                key={post._id}
-                src={post.postImage}
-                alt="post"
-                className="w-64 h-64 object-cover m-3 max-[885px]:w-full max-[885px]:h-full"
-              />
+              <Link to={`/addComment/${post._id}`}>
+                <img
+                  key={post._id}
+                  src={post.postImage}
+                  alt="post"
+                  className="w-64 h-64 object-cover m-3 max-[885px]:w-full max-[885px]:h-full"
+                />
+              </Link>
             ))}
           </div>
         </section>
