@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { FaRegComment } from "react-icons/fa";
-import { BsSave2, BsSave2Fill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -40,7 +39,9 @@ function Post({ post }) {
       )}
       {seeMore && (
         <div className="fle flex-col px-3">
-          <p className="text-lg font-semibold my-2">{description}</p>
+          <p className="text-lg font-semibold my-2 max-[540px]:text-base max-[540px]:font-normal">
+            {description}
+          </p>
           <p className="text-lg font-bold text-amber-400">
             {tags}
             <button

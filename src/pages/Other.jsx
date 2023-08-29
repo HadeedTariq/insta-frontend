@@ -32,7 +32,7 @@ function Other() {
               Hobbies: {user.hobby}
             </p>
           )}
-          <p className="text-xl font-semibold my-3 text-amber-300">
+          <p className="text-xl font-semibold my-3 text-amber-300 max-[540px]:text-base max-[540px]:font-normal">
             {user.description}
           </p>
           <div className="flex gap-4  my-3 mx-3">
@@ -41,7 +41,7 @@ function Other() {
                 key={post._id}
                 src={post.postImage}
                 alt="post"
-                className="w-64 h-64 object-cover"
+                className="w-64 h-64 object-cover max-[834px]:w-80 max-[834px]:h-72"
               />
             ))}
           </div>
