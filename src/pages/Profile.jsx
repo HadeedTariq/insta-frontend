@@ -47,9 +47,8 @@ function Profile() {
           </div>
           <div className="flex gap-4 justify-center  mb-12 mt-4 mx-3 max-[1064px]:flex-wrap">
             {userPosts?.map((post) => (
-              <Link to={`/addComment/${post._id}`}>
+              <Link to={`/addComment/${post._id}`} key={post._id}>
                 <img
-                  key={post._id}
                   src={post.postImage}
                   alt="post"
                   className="w-64 h-64 object-cover m-3 max-[885px]:w-full max-[885px]:h-full"
