@@ -18,8 +18,8 @@ function EditProfile() {
     setObjectUrl(URL.createObjectURL(i));
     const data = new FormData();
     data.append("file", i);
-    data.append("upload_preset", "chat-app");
-    data.append("cloud_name", "ddfdfdfd");
+    data.append("upload_preset", "n5y4fqsf");
+    data.append("cloud_name", "lmsproject");
     try {
       const { data: i } = await axios.post(
         "https://api.cloudinary.com/v1_1/ddfdfdfd/image/upload",
